@@ -20,7 +20,7 @@ function get_asset($tipo, $nombre, $bool_print = true) {
 //get asset endregion
 
 /*variables globales region*/
-
+$GLOBALS["assets_version"] = "20170911";
 /*variables globales endregion*/
 
 /*setup region*/
@@ -122,11 +122,12 @@ add_action( 'widgets_init', 'playground_widgets_init' );
  * Enqueue scripts and styles.
  */
 function playground_scripts() {
-	$version = "20170512";
+	$version = $GLOBALS["assets_version"];
 	wp_enqueue_style( 'playground-style', get_stylesheet_uri(), array(), $version );
 	wp_enqueue_script( 'playground-navigation', get_template_directory_uri() . '/js/navigation.js', array(), $version, true );
 	wp_enqueue_script( 'playground-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), $version, true );
 	wp_enqueue_script( 'jquery_3', get_template_directory_uri() . '/js/jquery-3.2.1.min.js', array(), $version, true );
+	wp_enqueue_script( 'playground-base', get_template_directory_uri() . '/js/base.js', array('jquery_3'), $version, true );
 	wp_enqueue_script( 'playground-functions', get_template_directory_uri() . '/js/functions.js', array('jquery_3'), $version, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
