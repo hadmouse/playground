@@ -1,0 +1,147 @@
+@mixin font-face($nombre, $archivo, $peso, $estilo) {
+    $directorio: $directorioFuentes + $archivo;
+    @font-face {
+        font-family: "#{$nombre}";
+        src: url($directorio + ".eot?v1.3");
+        src: url($directorio + ".eot?#iefixv1.3") format('embedded-opentype'),
+            url($directorio + ".woff?v1.3") format('woff'),
+            url($directorio + ".ttf?v1.3")  format('truetype'),
+            url($directorio + ".svg#" + $nombre + "?v1.3")  format('truetype');
+        font-weight: $peso;
+        font-style: $estilo;
+    }
+}
+
+@mixin verticalAlign($hijo){
+    &:before{
+        content: "";
+        height: 100%;
+        vertical-align: middle;
+        display: inline-block;
+    }
+    & #{$hijo}{
+        vertical-align: middle;
+        display: inline-block;
+    }
+}
+
+@mixin resetUl{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin clearfix{
+    &:after{
+        content:"";
+        display: block;
+        width: 100%;
+        float: none;
+        clear: both;
+        font-size: 0;
+    }
+}
+
+@mixin microClearfix{
+    &:after, &:before{
+        content: "";
+        display: table;
+    }
+    &:after{
+        clear:both;
+    }
+    &{
+        zoom: 1;
+    }
+}
+
+@mixin transform($transform...){
+	-webkit-transform: $transform;
+	-moz-transform: $transform;
+	transform: $transform;
+}
+
+@mixin transition($transition...){
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	transition: $transition;
+}
+
+@mixin floatLi{
+	@include resetUl;
+	@include clearfix;
+	& li{
+		display: inline-block;
+		float: left;
+	}
+}
+
+@mixin noSelectable{
+	cursor: default;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	* {
+		cursor: default;
+	}
+}
+
+@mixin textOverflow{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@mixin placeholder {
+	&::-webkit-input-placeholder {
+	   @content;
+	}
+
+	&:-moz-placeholder { /* Firefox 18- */
+	   @content;
+	}
+
+	&::-moz-placeholder {  /* Firefox 19+ */
+	   @content; 
+	}
+
+	&:-ms-input-placeholder {  
+	   @content;
+	}
+}
+
+@mixin borderGradient($border, $width: 40%, $color: rgba(0, 0, 0, 0.75)) {
+	&::before {
+		@if $border == "top" {
+			background-image: linear-gradient($color, transparent);
+			height: $width;
+			left: 0;
+			top: 0;
+			width: 100%;
+		} @else if $border == "bottom" {
+			background-image: linear-gradient(transparent, $color);
+			bottom: 0;
+			height: $width;
+			left: 0;
+			width: 100%;
+		} @else if $border == "left" {
+			background-image: linear-gradient(90deg, $color, transparent);
+			height: 100%;
+			left: 0;
+			top: 0;
+			width: $width;
+		} @else if $border == "right" {
+			background-image: linear-gradient(270deg, $color, transparent);
+			height: 100%;
+			right: 0;
+			top: 0;
+			width: $width;
+		}
+		
+		content: "";
+		display: block;
+		position: absolute;
+	}
+}

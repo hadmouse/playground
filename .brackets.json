@@ -1,0 +1,15 @@
+{
+    "path": {
+        "scss/style.scss": {
+            "sass.enabled": true,
+            "sass.options": {
+                "includePaths": [],
+                "outputDir": "../",
+                "sourceComments": false,
+                "outputStyle": "compressed"
+            },
+            "linting.collapsed": false,
+            "fonts.fontSize": "15px"
+        }
+    }
+}

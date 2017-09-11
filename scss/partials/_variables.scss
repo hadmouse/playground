@@ -1,0 +1,17 @@
+//cortes
+$corteSM: 768px;
+$corteMD: 992px;
+$corteLG: 1200px;
+$corteXL: 1360px;
+$cortes: xs sm md lg;
+$cortesNum: 0 $corteSM $corteMD $corteLG;
+$alineaciones: left center right;
+
+//colores
+$color1: #0067c1;
+$color2: #e61d19;
+
+
+//fuentes
+$directorioFuentes: "assets/fonts/";
+$fuente1: Lato, Roboto, Open Sans, Helvetica, Arial, sans-serif;
