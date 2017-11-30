@@ -76,4 +76,23 @@ function min_max_area(element) {
 	}
 	return false;
 }
+
+function move_area(selector, x, y) {
+	"use strict";
+	var s = selector instanceof jQuery ? selector[0] : selector,
+		coords = s.getAttribute("coords").split(",");
+	
+	if (typeof x === "number") {
+		coords[0] = parseInt(coords[0], 10) + x;
+		coords[2] = parseInt(coords[2], 10) + x;
+	}
+	
+	if (typeof x === "number") {
+		coords[1] = parseInt(coords[1], 10) + y;
+		coords[3] = parseInt(coords[3], 10) + y;
+	}
+	
+	s.setAttribute("coords", coords.join(","));
+	return coords.join(",");
+}
 //image maps endregion
