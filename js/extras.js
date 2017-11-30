@@ -79,7 +79,7 @@ function min_max_area(element) {
 
 function move_area(selector, x, y) {
 	"use strict";
-	var s = selector instanceof jQuery ? selector[0] : selector,
+	var s = selector,
 		coords = s.getAttribute("coords").split(",");
 	
 	if (typeof x === "number") {
